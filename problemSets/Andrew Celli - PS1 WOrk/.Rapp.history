@@ -1,0 +1,20 @@
+meanResponse
+meanResponse = totalResponseValue /1145
+totalResponses =1145#
+response1 =237#
+response2 =511#
+response3 =314#
+response4 =69#
+response5 =14#
+totalResponseValue = response1 + response2*2 + response3*3 + response4+4 + response5*5#
+meanResponse = totalResponseValue /1145#
+meanResponse
+totalResponses =1145
+response1 =237
+response2 =511
+response3 =314
+response4 =69
+response5 =14
+totalResponseValue = response1 + response2*2 + response3*3 + response4+4 + response5*5
+meanResponse = totalResponseValue /1145
+meanResponse
