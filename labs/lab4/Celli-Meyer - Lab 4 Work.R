@@ -29,9 +29,9 @@ hist(approve)
 set.seed(1)
 gallup = TrumpApproval[TrumpApproval$survey_house=="Gallup"&TrumpApproval$end_date == "2/19/2017",]
 John = rnorm(1500, .42, sqrt(.25))
-density((rnorm(1500, .42, sqrt(.25)))))
+plot(density(John))
 quantiles(density(John), c(.20,.7))
-
+line(y = 3, x=0)
 ##    Hint: Find this poll using two conditions (survey_house, end_date)
 
 
