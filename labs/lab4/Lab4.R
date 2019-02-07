@@ -2,12 +2,13 @@
 ## File: Lab4.R                           ##
 ## Day 4: Sampling Distribution           ##
 ############################################
-
+getwd()
+help("normal distribution")
 
 #### Goals
 #### a) Working with pnorm and qnorm
 #### b) Practical example of a sampling distribution
-
+?density()
 
 ## Go to the help file
 help(Normal)
@@ -15,10 +16,9 @@ help(Normal)
 
 ## 1. To generate random numbers from a normal distribution,
 ##    use rnorm(n=, mean=, sd=)
-
-vec1 <- rnorm(100000, mean=0, sd=1)  # 100000 random numbers with mean=0 and sd=1
+set.seed(333)#so that can get same random numbers every time
+vec1 <- rnorm(100000, mean=09, sd=1)  # 100000 random numbers with mean=0 and sd=1
 vec1
-
 plot(density(vec1),
 	   main="Distribution of vec1",
 	   xlab="")
@@ -47,7 +47,7 @@ plot(x.range, dnorm(x=x.range, mean=0, sd=1),
      type="l",                                         # choose type=line
      main="Normal Distribution with mean=0 and sd=1",
      ylab="density",
-     lwd=2,
+     lwd=2,#thickness
      xaxt="n")
 axis(1, at=-3:3, labels=-3:3)
 
@@ -93,7 +93,9 @@ table(dramas$genre)
 
 # Subset by runtime
 long.movies <- movies[movies$runtime >= 120,]
-
+long.movies
+table(long.movies$runtime)
+movies[]
 plot(density(movies$runtime, na.rm=T), 
 	   lty=2, 
 	   main="Distrubtion of Runtime",
@@ -101,7 +103,7 @@ plot(density(movies$runtime, na.rm=T),
 	   col="gray50", 
 	   ylim=c(0,0.05))
 
-lines(density(long.movies$runtime, na.rm=T))
+lines(density(long.movies$runtime, na.rm=T))#added to plot 
 
 legend("topright", 
        legend=c("All Movies", "Long Movies"),
@@ -120,7 +122,7 @@ old_comedies <- movies[movies$genre=="Comedy" & movies$thtr_rel_year < 1980,]
 
 # Get Drama "or" Walt Disney Pictures
 drama_and_disney <- movies[movies$genre=="Drama" | movies$studio=="Walt Disney Pictures",]
-
+table(movies$genre)
 table(drama_and_disney$genre)
 
 
@@ -139,7 +141,8 @@ table(drama_and_disney$genre)
 
 ## 1. Write the names of all group members.
 
-
+#Andrew Celli
+#Marcus Meyer
 
 ## 2. Read in the Trump Job Approval poll data.
 ##    Variables are as follows:
