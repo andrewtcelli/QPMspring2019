@@ -18,7 +18,6 @@ help(Normal)
 ##    use rnorm(n=, mean=, sd=)
 set.seed(333)#so that can get same random numbers every time
 vec1 <- rnorm(100000, mean=09, sd=1)  # 100000 random numbers with mean=0 and sd=1
-vec1
 plot(density(vec1),
 	   main="Distribution of vec1",
 	   xlab="")
@@ -36,7 +35,9 @@ lines(density(vec3), lty=2, col="blue")
 
 ## 2: dnorm(x=, mean=, sd=) returns the value of the probability density function, 
 ##    or the height of a density curve, given x.
-
+l = rnorm(10000, mean=0, sd=1)
+plot(density(l))
+dnorm(x = 0, mean=0, sd=1)
 dnorm(0, mean=0, sd=1)
 dnorm(-1, mean=0, sd=1)
 dnorm(1, mean=0, sd=1)
@@ -85,7 +86,8 @@ qnorm(c(0.025, 0.975), mean=0, sd=1)
 ## >, <, >=, <=
 
 movies <- read.csv("movies.csv")
-
+dir()
+setwd("Des")
 # Subset by movie genre
 dramas <- movies[movies$genre=="Drama",]
 
