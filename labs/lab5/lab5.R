@@ -35,13 +35,13 @@ pt(0, df = 10)
 ## but t-distribution has more volume in the tails
 pnorm(-2, mean = 0, sd = 1)
 pt(-2, df = 10)
-
+?pt()
 
 #### "Quantile" functions, or inverse cumulative probability distribution
 ## Where is cumulative probability = .025?
 ## Farther out in the tails of t-distribution 
 qnorm(.025, mean = 0, sd = 1)
-qt(.025, df = 10)
+qt(.025, df = Inf)
 
 
 ## "Density" functions
@@ -59,8 +59,10 @@ dt(-3, df = 5)
 
 
 #### Using R to calculate CIs
+setwd("Desktop")
+dir()
 
-## Load the data: a subset of 2004 American National Election Study
+## Load the data: a subset of 2004 American National Election Study;
 load("anes.Rdata")
 View(anes)
 
@@ -77,7 +79,7 @@ sample_sd <- sd(anes$bushiraq, na.rm = TRUE)
 lower_95 <- sample_mean - (z95 * (sample_sd/sqrt(n)))
 upper_95 <- sample_mean + (z95 * (sample_sd/sqrt(n)))
 confint95 <- c(lower_95, upper_95) ## What does this mean?
-
+confint95
 
 ## Now let's use a confidence coefficient = .99
 z99 <- qnorm((1 - .99)/2, lower.tail = FALSE)
@@ -112,20 +114,26 @@ data(africa)
 
 ## 3. Create two subsets of the data
 ## One with only countries were no military coups have occurred
+nomilcoup = africa[africa$miltcoup==0,]
+nomilcoup
 ## One where any military coups have occurred
-
-
-
-
-
-
+milcoup = africa[africa$miltcoup>0,]
+milcoup
 ## 4. Find a 95% confidence interval for the mean percent of voting in the last
 ## elections for each subset of countries
+plot(density(milcoup$pctvote, na.rm = TRUE))
+meanNomilcoupVote = mean(nomilcoup$pctvote, na.rm = TRUE)
+meanMilcoupVote = mean(milcoup$pctvote, na.rm = TRUE)
+sdNomilcoupVote = sd(nomilcoup$pctvote, na.rm = TRUE)
+sdMilcoupVote = sd(milcoup$pctvote, na.rm = TRUE)
+length(nomilcoup)
+zscore95 = qnorm(.025, lower.tail = FALSE)
 
+c(meanNomilcoupVote - zscore95*(sdNomilcoupVote/(length(nomilcoup)^.5)),
+meanNomilcoupVote + zscore95*(sdNomilcoupVote/(length(nomilcoup)^.5)))
 
-
-
-
+c(meanMilcoupVote - zscore95*(sdMilcoupVote/(length(milcoup)^.5)),
+meanMilcoupVote + zscore95*(sdMilcoupVote/(length(milcoup)^.5)))
 
 
 ## 5. What do you learn about voter turnout in African countries from
