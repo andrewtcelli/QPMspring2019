@@ -3,7 +3,8 @@
 ## t-test and chi-squared test                     ##
 #####################################################
 
-
+dir()
+setwd("~/Documents/GitHub/QPMspring2019/labs/lab6/")
 
 ## Goals:
 ## 1. Difference in means test in R
@@ -17,6 +18,7 @@ help(t.test)
 
 
 social <- read.csv("social.csv")
+social
 colnames(social)
 
 # Prior to the 2006 primary, randomly selected voters received one of 
@@ -100,7 +102,7 @@ chisq.test(fake.tab)
 
 
 # 1. Write the names of all group members.
-
+Marcus/Andrew
 
 
 
@@ -119,6 +121,8 @@ colnames(negative)
 
 # Do negative messages make a difference for voter turnout? Conduct an
 # appropriate test and interpret the result.
+
+t.test(treatment ~ voted02p, data=negative )
 
 # treatment: 1 = negative frame (control), 2 = positive frame (treatment)
 # voted02p: 0 = did not vote, 1 = voted
@@ -142,8 +146,8 @@ View(my.titanic)
 #    (2) Conduct a necessary hypothesis test with the null that survival and 
 #    passanger class are independent. Interpret the result.
 
-
-
+table(my.titanic$Survived , my.titanic$Pclass)
+t.test(my.titanic$Survived , my.titanic$Pclass)
 
 ################ Additional Question ################ 
 
@@ -151,6 +155,7 @@ View(my.titanic)
 #    helped them escape regardless of their class. Using only the women in 
 #    the sample, make a contingency table to test this assertion. Do you think 
 #    this evacuation policy worked?
-
+table(my.titanic$Survived, my.titanic$Sex)
+t.test(my.titanic$Survived, my.titanic$Survived[my.titanic$Sex=="Women"])
 
 
