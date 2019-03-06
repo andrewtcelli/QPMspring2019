@@ -7,6 +7,11 @@ pnorm(57.75, mean = 50, sd = 6) #a
 1-pnorm(50.45, mean = 50, sd = 6) #b
 pnorm(59.4, mean = 50, sd = 6) - pnorm(52.4, mean = 50, sd = 6) #c
 
+ddd = c(35,38,38,90)
+summary(ddd)
+boxplot(ddd)
+sd(ddd)
+
 #Problem 5
 set.seed(12345)
 salaries <- rnorm(n=10000,mean=40000,sd=15000)
