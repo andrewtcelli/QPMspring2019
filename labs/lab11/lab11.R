@@ -18,7 +18,7 @@ help(chisq.test)
 
 
 # Let's make a fake contingency table for gender and party ID
-fake.tab <- matrix(c(762, 327, 468, 484, 239, 677), nrow=2, byrow=TRUE)
+fake.tab <- matrix(c(762, 327, 468, 484, 239, 677), nrow=2, byrow=TRUE) #by row then col since ; CAREFUL HERE
 dimnames(fake.tab) <- list(Gender=c("Female", "Male"),
                            Party=c("Democrat", "Independent", "Republican"))
 fake.tab <- as.table(fake.tab)
@@ -72,6 +72,7 @@ oddsratio(cancerTable, method = "wald")$measure[-1,]
 x <- as.vector(cancerTable)
 names(x) <- c("a","c","b","d")
 orHat <- as.numeric((x["a"] * x["d"]) / (x["b"] * x["c"]))
+orHat
 ## [1] 1.008744
 
 # Second, create standard error of log odds ratio
@@ -108,14 +109,16 @@ oddsratio(cancerTable, method = "wald")$measure[-1,]
 abort.tab <- matrix(c(222, 225, 201, 277, 113, 223, 18, 12), nrow=4, byrow=TRUE)
 dimnames(abort.tab) <- list(Party=c("Democrat", "Independent", "Republican", "Other"),
                             Opinion=c("Yes", "No"))
-
-
+abort.tab
+?table
+abort.tab = as.table(abort.tab)#contingency table
+chisq.test(abort.tab)
 #    (1) Make a contingency table of the observed frequencies for the preference regarding 
 #    abortion with respect to respondents' party
 #    Hint: use table()
 
 #    (2) Conduct a necessary hypothesis test with the null that opinion and 
-#    party are independent. Interpret the result
+#    party are independent. Interpret the result 
 
 
 ################ Additional Question ################ 
@@ -124,9 +127,11 @@ dimnames(abort.tab) <- list(Party=c("Democrat", "Independent", "Republican", "Ot
 #     of Victim and Race of Offender for murders in the United States in 2005 having a single victim and single offender
 
 convict.tab <- matrix(c(3150, 230, 516, 2984), nrow=2, byrow=TRUE)
-dimnames(convict.tab) <- list(Offender=c("White", "Black"),
-                            Defendant=c("White", "Black"))
-
+dimnames(convict.tab) <- list(Offender=c("WhiteOf", "BlackOf"),
+                            Victim=c("WhiteVict", "BlackVict"))
+convict.tab
+oddsratio(convict.tab)
+chisq.test(convict.tab)
 # The table aboves provides the cross tabs for the race of the victim by the race of the offender
 # We treat race of victim as the response variable
 
