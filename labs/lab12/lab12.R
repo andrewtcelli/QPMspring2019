@@ -15,8 +15,8 @@
 ## “Ordinary economic voting behavior in the extraordinary
 ## election of Adolf Hitler.” 
 load("nazis.Rdata")
-
-
+dir()
+setwd("")
 ## Variables
 ## nvoter: number of eligible voters
 ## nazivote: number of votes for Nazis
@@ -31,7 +31,10 @@ hist(nazis$nazishare)
 
 ## lm() function is for regression aka "linear model"
 ?lm
-
+plot(nazis$nazishare,nazis$shareself)
+a= lm(nazis$nazishare~nazis$shareself,data =nazis)
+a$coefficients
+mean(a$residuals)
 
 ## Bivariate regression where outcome variable is share of 
 ## vote for Nazis and explanatory variable is proportion of
@@ -69,13 +72,14 @@ plot(x = nazis$shareself, y = nazis$nazishare, pch = "+",
 
 
 ## We can add our fitted line in 2 ways
-abline(mod_self, col = "red", lwd = 2) ## use the model itself
+abline(mod_self, col = "red", lwd = 2) ## use the model itself, dont need to actually get coeff/yint 
 abline(a = .3310, b = .4554, col = "blue", lwd = 2)  ## use coefficient results
 
 
 ## Let's check out the residuals for the first 10 observations
 ## Part of the model object
-mod_self$residuals[1:10]
+mod_self$residuals[]
+
 
 
 ## Remember residuals are the observed value - fitted value
@@ -116,14 +120,16 @@ hist(mod_self$residuals)
 library(faraway)
 data(sat)
 ?sat
-
-
-
-
+plot(sat$expend, sat$total)
+satmodel=lm(sat$total~sat$expend)
+satmodel
+abline(satmodel)
 ## (1) Plot expenditures per pupil as your explanatory variable and
 ## % of eligible students taking the SAT as our outcome.  Do these data
 ## look like good candidates for OLS?
-
+hist(satmodel$residuals)
+abline(v=0, col = "blue")
+abline(v=mean(satmodel$residuals), col = "red")
 
 
 
