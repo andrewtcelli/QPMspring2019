@@ -59,7 +59,6 @@ set.seed(5)
 # create vector of data for all values of x
 x <- seq(from=-5, to=5, by=.1)
 # open up .pdf
-pdf("Q2.pdf")
 # create line plot for the distribution function 
 # of the normal distribution
 plot(x, dnorm(x), lwd=3, type="l", col=1, lty=1,
@@ -74,6 +73,7 @@ lines(x, dt(x, df=1), lwd=3, ylim=c(0, .4), col=4, lty=4)
 legend("topleft", 
        c("n(0,1)", "t(df=10)", "t(df=5)", "t(df=1)"), 
        lty=c(1,2,3,4), col=c(1,2,3,4), bty="n")
+
 dev.off()
 
 ############
