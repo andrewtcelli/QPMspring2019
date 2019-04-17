@@ -21,13 +21,18 @@
 library(faraway)
 data(sat)
 ?sat
+sat
+?cor
 
 
 # We found that expend has a positive effect on takers with
 # 95% level of significance.
-sat1 <- lm(takers ~ expend, data=sat)
-summary(sat1)
-
+sat1 <- lm(takers ~ expend, data=sat)summary(sat1)
+cor(sat)
+plot(sat$math, sat$total)
+sat1 <- lm(total ~ math, data=sat)
+plot(sat1)
+sat1
 
 # What if we control for other factors?
 sat2 <- lm(takers ~ expend + ratio + salary, data=sat)
@@ -39,6 +44,13 @@ summary(sat2)
 # What if we include all the variables in the data?
 sat3 <- lm(takers ~ ., data=sat)
 summary(sat3)
+plot(sat3)
+
+
+
+
+
+
 # total is NA because it is verbal + math
 
 
@@ -106,7 +118,7 @@ no.int <- lm(y ~ treatment, data=fake.dat)
 summary(no.int)
 # Treatment is not statistically different from 0
 
-
+cor(fake.dat)
 # Let's try interaction
 int1 <- lm(y ~ treatment + partyID + treatment:partyID, data=fake.dat)
 summary(int1)
