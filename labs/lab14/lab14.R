@@ -8,38 +8,38 @@
 
 ## Goals:
 ## 1. Regression diagnostics
-
+setwd("/Users/andrewcelli/Documents/GitHub/QPMspring2019/")
+getwd()
 library("faraway")
 data("star")
 help(star)
 colnames(star)
-
+star
 # For an illustrative purpose, we drop two observations
 star <- star[-c(11,20),]
-
+star
 # Change index and row numbers
 star$index <- row.names(star) <- 1:nrow(star)
 
 
 # The data look like this
 plot(star$temp, star$light,
-     xlab="Temperature", ylab="Light Intensity",
-     type="n")
+     xlab="Temperature", ylab="Light Intensity")
 text(star$temp, star$light, labels=star$index)
 
 
 # Bivariate model
 model1 <- lm(light ~ temp, data=star)
 summary(model1)
-
+col="firebrick4"
 
 # Estimated line
-abline(model1, col="firebrick1", lwd=2)
+abline(model1, col="firebrick4", lwd=2)
 
 
 # Check the residuals. Do they look more or less random?
 plot(residuals(model1) ~ fitted(model1), data=star)
-abline(h=0)
+abline(h=0, col = col)
 
 # Use absolute residuals
 plot(abs(residuals(model1)) ~ fitted(model1), data=star)
@@ -47,6 +47,7 @@ abline(h=0)
 
 
 install.packages("car")
+install.packages("rlang")
 library("car") # a package with lots of diagnostic tools
 
 
