@@ -20,12 +20,12 @@ dimnames(stdResiduals) <- list(Class=c("Upper", "Lower"),
 stdResiduals
 
 #PROBLEM 2 ---------
-tstat1 = 0.042/0.016
-1- pt(q = tstat1, df = 129,lower.tail = TRUE)
-tstat2 = 0.042/0.016
-1- pt(q = tstat1, df = 129,lower.tail = TRUE)
-tstat2 = 0.3/0.016
-1- pt(q = tstat1, df = 129,lower.tail = TRUE)
+tstat1 = (0.042)/0.016
+2*(1- pt(q = tstat1, df = 129,lower.tail = TRUE))
+tstat2 = (0.042)/0.016
+2*(1- pt(q = tstat2, df = 129,lower.tail = TRUE))
+tstat3 = 0.3/0.016
+2*(1- pt(q = tstat3, df = 129,lower.tail = TRUE))
 #PROBLEM 3 ---------
 
 DataP3 = read.csv(url("https://raw.githubusercontent.com/kosukeimai/qss/master/PREDICTION/women.csv"))
