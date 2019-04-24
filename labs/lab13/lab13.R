@@ -27,11 +27,13 @@ sat
 
 # We found that expend has a positive effect on takers with
 # 95% level of significance.
-sat1 <- lm(takers ~ expend, data=sat)summary(sat1)
+sat1 <- lm(takers ~ expend, data=sat)
+summary(sat1)
 cor(sat)
 plot(sat$math, sat$total)
 sat1 <- lm(total ~ math, data=sat)
 plot(sat1)
+
 sat1
 
 # What if we control for other factors?
